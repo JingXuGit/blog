@@ -12,8 +12,15 @@ module.exports = {
     pages: {
         index: {
             entry: 'src/main.js',
-            title: '李景旭的个人博客',//放要改的title名
+            title: '雪后燕瑶池,人间第一枝',//放要改的title名
         },
+    },
+    chainWebpack: config => {
+        config.plugin('html')
+            .tap(args => {
+                args[0].title = "雪后燕瑶池,人间第一枝";
+                return args;
+            })
     },
     // devServer: {
     //     proxy: {
