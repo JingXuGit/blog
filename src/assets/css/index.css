@@ -85,7 +85,9 @@ body::-webkit-scrollbar-thumb:hover {
 .center {
     text-align: center;
 }
-
+.el-menu.el-menu--horizontal{
+    border: none;
+}
 .fixed {
     position: fixed;
     width: 100%;
@@ -125,6 +127,7 @@ body::-webkit-scrollbar-thumb:hover {
 
 .content {
     margin: 0 auto;
+    margin-top: 60px;
 }
 
 @media(min-width:960px) {

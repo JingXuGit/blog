@@ -8,7 +8,7 @@ module.exports = {
         // 开启 CSS source maps?
         sourceMap: false,
         // css预设器配置项
-        loaderOptions: { css: {}, postcss: { plugins: [require('postcss-px2rem')({ remUnit: 100 })] } },
+        // loaderOptions: { css: {}, postcss: { plugins: [require('postcss-px2rem')({ remUnit: 100 })] } },
     },
     chainWebpack: config => {
         config.plugin('html').tap(args => {
