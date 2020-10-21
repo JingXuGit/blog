@@ -71,16 +71,6 @@ export default {
   height: 60px; /* no */
   line-height: 60px; /* no */
 }
-.title {
-  font-size: 20px !important; /* no */
-  font-weight: 500;
-  letter-spacing: 0.0125em !important;
-  cursor: pointer;
-  padding: 8px; /* no */
-  border-radius: 2px; /* no */
-  text-indent: 0.0892857143em;
-  text-transform: uppercase;
-}
 .title:hover {
   background: #f7f7f7;
 }

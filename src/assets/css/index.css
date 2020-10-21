@@ -99,3 +99,48 @@ body::-webkit-scrollbar-thumb:hover {
 [class^=el-icon-] {
     vertical-align: middle;
 }
+
+.title {
+    font-size: 20px !important;
+    /* no */
+    font-weight: 500;
+    letter-spacing: 0.0125em !important;
+    cursor: pointer;
+    padding: 8px;
+    /* no */
+    border-radius: 2px;
+    /* no */
+    text-indent: 0.0892857143em;
+    text-transform: uppercase;
+}
+
+.flex_between {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.content {
+    margin: 0 auto;
+}
+
+@media(min-width:960px) {
+    .content {
+        max-width: 900px
+    }
+}
+
+@media(min-width:1264px) {
+    .content {
+        max-width: 1185px
+    }
+}
+
+@media(min-width:1904px) {
+    .content {
+        max-width: 1785px
+    }
+}
