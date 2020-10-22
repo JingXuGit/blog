@@ -12,6 +12,7 @@ const routes = [{
     {
         path: '/',
         name: 'Home',
+        type: '/',
         redirect: '/',
         component: () =>
             import ('@/views/Home.vue'),
@@ -23,6 +24,27 @@ const routes = [{
             components: {
                 default: () =>
                     import ('@/views/index/index.vue'),
+
+                top: () =>
+                    import ('@/components/nav/header'),
+            },
+        }]
+    },
+    {
+        path: '/notes',
+        name: 'notes',
+        type: '/notes',
+        redirect: '/notes',
+        component: () =>
+            import ('@/views/Home.vue'),
+        children: [{
+            path: '/notes',
+            meta: {
+                title: '雪后燕瑶池,人间第一枝',
+            },
+            components: {
+                default: () =>
+                    import ('@/views/notes/index.vue'),
 
                 top: () =>
                     import ('@/components/nav/header'),

@@ -6,7 +6,7 @@
       <router-view></router-view>
     </transition>
     <!-- </div> -->
-    <el-footer style="padding:0;height:70px;">
+    <el-footer style="padding:0;position:relative;">
       <p style="font-size:12px;margin:5px 0;">❤️By-JingXu-Blog</p>
       <p style="font-size:12px">© {{date}} 雪后燕瑶池,人间第一枝</p>
     </el-footer>
