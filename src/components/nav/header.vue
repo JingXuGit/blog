@@ -55,14 +55,14 @@ export default {
         }
       }
       if (nav_path == "/") {
+        this.flag = true;
         this.activeIndex = "/";
-        // this.flag = true;
       } else if (nav_path == "/resume") {
         this.flag = false;
         this.activeIndex = nav_path;
       }
       else {
-        // this.flag = false;
+        this.flag = true;
         this.activeIndex = nav_path;
       }
     },
