@@ -17,7 +17,7 @@ html {
     width: 100%;
     margin: 0;
     padding: 0;
-    background-color: #f7f7f7;
+    background-color: #f5f5f5;
     font-family: Roboto, sans-serif!important;
 }
 
@@ -111,8 +111,8 @@ body::-webkit-scrollbar-thumb:hover {
     cursor: pointer;
     padding: 8px;
     border-radius: 2px;
-    text-indent: 0.0892857143em;
-    text-transform: uppercase;
+    text-indent: 0.0125em;
+    /* text-transform: uppercase; */
 }
 
 .flex_between {
@@ -150,8 +150,22 @@ body::-webkit-scrollbar-thumb:hover {
     color: #000;
 }
 
+.el-card.is-always-shadow,
+.el-card.is-hover-shadow:focus,
+.el-card.is-hover-shadow:hover {
+    box-shadow: 10px 10px 10px #d0d0d0, -10px -10px 10px #fff
+}
+
 .el-card {
-    border-radius: 10px;
+    background-color: #f5f5f5;
+    border-radius: 15px;
+    border: none;
+    box-shadow: 10px 10px 10px #d0d0d0, -10px -10px 10px #fff
+}
+
+.shadow {
+    -webkit-box-shadow: 10px 10px 10px #d0d0d0, -10px -10px 10px #fff;
+    box-shadow: 10px 10px 10px #d0d0d0, -10px -10px 10px #fff;
 }
 
 .el-card__body {

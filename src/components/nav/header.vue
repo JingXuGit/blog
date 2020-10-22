@@ -8,7 +8,7 @@
         <el-col :lg="16" :xl="16" class="hidden-md-and-down height">
           <el-menu :default-active="activeIndex" class="el-menu-top" mode="horizontal" router>
             <el-menu-item index="/">博客首页</el-menu-item>
-            <el-menu-item index="/notes">好记性不如烂笔头</el-menu-item>
+            <el-menu-item index="/notes">文章</el-menu-item>
             <el-menu-item index="/resume">简历</el-menu-item>
             <el-menu-item index="/essays">随笔</el-menu-item>
             <el-menu-item index="/leaveMessage">留言</el-menu-item>
@@ -72,7 +72,7 @@ export default {
 }
 .el-menu-top {
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-end;
 }
 .height {
   height: 50px; /* no */

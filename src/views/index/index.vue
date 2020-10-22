@@ -2,8 +2,9 @@
 <template>
   <div class="content">
     <div style="margin: 0 auto; max-width: 1080px !important; padding: 0 10px">
+
       <div class="flex_between" style="height: 60px;padding:0 8px">
-        <div class="title">猜你喜欢</div>
+        <div class="title">~~~~</div>
         <div class="flex_between">
           <el-switch v-model="switchValue" active-text="自动播放" @change="switchChange" active-color="#000000">
           </el-switch>
@@ -23,7 +24,7 @@
       </el-carousel>
 
       <el-row style="margin:20px 0" :gutter="10">
-        <el-col :xs="24" :sm="24" :md="24" :lg="15" :xl="15">
+        <el-col :xs="24" :sm="24" :md="24" :lg="17" :xl="17">
           <div>
             <div class="flex_between" style="height: 50px;padding:0 8px">
               <div class="title">最近文章</div>
@@ -33,6 +34,7 @@
               </div>
             </div>
           </div>
+
           <ul class="article_list">
             <li class="article_li_list" v-for="o in 5" :key="o">
               <div style="position:relative">
@@ -54,15 +56,41 @@
           </ul>
         </el-col>
 
-        <el-col :offset="1" :md="8" :lg="8" class="hidden-md-and-down">
+        <el-col :offset="1" :md="6" :lg="6" class="hidden-md-and-down">
+
+          <div class="right_model">
+            <div class="title" style="text-align:left;height: 50px;line-height:50px;padding:0 8px">博主信息</div>
+            <el-card>
+              <div class="shadow" style="background:#f5f5f5;width:50px;height:50px;border-radius:50%;margin:10px auto">
+                <el-avatar :size="50" :src="getImgUrl('avatar.jpg')"></el-avatar>
+              </div>
+              <div class="title">JingXu</div>
+              <ul style="display:flex" class="personal_message_list">
+                <li class="personal_message_list_li">
+                  <p>文章</p>
+                  <p>17</p>
+                </li>
+                <li class="personal_message_list_li">
+                  <p>标签</p>
+                  <p>13</p>
+                </li>
+                <li class="personal_message_list_li">
+                  <p>分类</p>
+                  <p>2</p>
+                </li>
+              </ul>
+            </el-card>
+          </div>
+
           <div class="right_model">
             <div class="title" style="text-align:left;height: 50px;line-height:50px;padding:0 8px">全部标签</div>
             <el-card>
               <span class="tags_box">
-                <span class="tags" v-for="o in 11" :key="o">{{'标签标签 ' + o }}</span>
+                <span class="tags" v-for="o in 11" :key="o">{{'标签 ' + o }}</span>
               </span>
             </el-card>
           </div>
+
           <div class="right_model">
             <div class="title" style="text-align:left;">随笔</div>
             <el-card>
@@ -74,7 +102,6 @@
               </div>
             </el-card>
           </div>
-
         </el-col>
       </el-row>
 
@@ -188,7 +215,7 @@ export default {
 }
 
 .tags {
-  margin: 6px;
+  margin: 5px 10px;
   border-radius: 4px;
   display: inline-block;
   height: 100%;
@@ -209,7 +236,7 @@ export default {
 
 .essays {
   padding: 6px;
-  border: 1px solid #ccc;
+  border: 1px solid #e0e0e0;
   margin: 20px;
   text-align: left;
   font-size: 14px;
@@ -242,8 +269,8 @@ export default {
 .article_li_list {
   height: 100%;
   border-radius: 10px;
-  background: #fff;
-  box-shadow: 2px 2px 10px #ccc;
+  background: #f5f5f5;
+  box-shadow: 10px 10px 10px #d0d0d0, -10px -10px 10px #fff;
   margin-bottom: 20px;
   position: relative;
   overflow: hidden;
@@ -269,5 +296,23 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
+}
+.personal_message_list {
+  margin:10px;
+}
+.personal_message_list_li {
+  text-align: center;
+  width: 33%;
+}
+.personal_message_list_li p:first-child {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 5px;
+  text-indent: 0.0125em;
+}
+.personal_message_list_li p:last-child {
+  font-size: 16px;
+  text-indent: 0.00125em;
+  font-weight: 600;
 }
 </style>
