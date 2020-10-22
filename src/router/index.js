@@ -51,6 +51,69 @@ const routes = [{
             },
         }]
     },
+    {
+        path: '/resume',
+        name: 'resume',
+        type: '/resume',
+        redirect: '/resume',
+        component: () =>
+            import ('@/views/Home.vue'),
+        children: [{
+            path: '/resume',
+            meta: {
+                title: '雪后燕瑶池,人间第一枝',
+            },
+            components: {
+                default: () =>
+                    import ('@/views/resume/index.vue'),
+
+                top: () =>
+                    import ('@/components/nav/header'),
+            },
+        }]
+    },
+    {
+        path: '/essays',
+        name: 'essays',
+        type: '/essays',
+        redirect: '/essays',
+        component: () =>
+            import ('@/views/Home.vue'),
+        children: [{
+            path: '/essays',
+            meta: {
+                title: '雪后燕瑶池,人间第一枝',
+            },
+            components: {
+                default: () =>
+                    import ('@/views/essays/index.vue'),
+
+                top: () =>
+                    import ('@/components/nav/header'),
+            },
+        }]
+    },
+    {
+        path: '/guestbook',
+        name: 'guestbook',
+        type: '/guestbook',
+        redirect: '/guestbook',
+        component: () =>
+            import ('@/views/Home.vue'),
+        children: [{
+            path: '/guestbook',
+            meta: {
+                title: '雪后燕瑶池,人间第一枝',
+            },
+            components: {
+                default: () =>
+                    import ('@/views/guestbook/index.vue'),
+
+                top: () =>
+                    import ('@/components/nav/header'),
+            },
+        }]
+    },
 ]
 
 const router = new VueRouter({

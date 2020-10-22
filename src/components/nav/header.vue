@@ -11,7 +11,7 @@
             <el-menu-item index="/notes">文章</el-menu-item>
             <el-menu-item index="/resume">简历</el-menu-item>
             <el-menu-item index="/essays">随笔</el-menu-item>
-            <el-menu-item index="/leaveMessage">留言</el-menu-item>
+            <el-menu-item index="/guestbook">留言</el-menu-item>
           </el-menu>
         </el-col>
         <el-col :lg="4" :xl="4" class="height hidden-md-and-down">
