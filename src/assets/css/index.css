@@ -181,24 +181,29 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .content {
-    margin: 0 auto;
     margin-top: 60px;
 }
 
 @media(min-width:960px) {
-    .content {
+    .content,
+    .contents {
+        margin: 0 auto;
         max-width: 900px
     }
 }
 
 @media(min-width:1264px) {
-    .content {
+    .content,
+    .contents {
+        margin: 0 auto;
         max-width: 1185px
     }
 }
 
 @media(min-width:1904px) {
-    .content {
+    .content,
+    .contents {
+        margin: 0 auto;
         max-width: 1785px
     }
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class='content'>
+  <div class='contents'>
     简历
   </div>
 </template>

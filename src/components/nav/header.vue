@@ -57,7 +57,11 @@ export default {
       if (nav_path == "/") {
         this.activeIndex = "/";
         // this.flag = true;
-      } else {
+      } else if (nav_path == "/resume") {
+        this.flag = false;
+        this.activeIndex = nav_path;
+      }
+      else {
         // this.flag = false;
         this.activeIndex = nav_path;
       }
