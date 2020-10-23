@@ -46,7 +46,7 @@ pre {
 }
 
 .modal-content {
-    color: #000;
+    color: #000000;
 }
 
 .modal-body p {
@@ -869,8 +869,8 @@ button:focus {
 
 .ehover9 button.info {
     transform: translateY(-200px);
-    color: #000;
-    border: 1px solid #000;
+    color: #000000;
+    border: 1px solid #000000;
     transition: all ease-in-out 0.3s;
 }
 
@@ -887,9 +887,9 @@ button:focus {
 
 .ehover9:hover button.info {
     transform: translateY(0px);
-    box-shadow: 0 0 5px #000;
-    color: #000;
-    border: 1px solid #000;
+    box-shadow: 0 0 5px #000000;
+    color: #000000;
+    border: 1px solid #000000;
     transition-delay: 0.3s;
 }
 

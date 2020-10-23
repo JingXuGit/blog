@@ -4,11 +4,17 @@
 
       <div class='header hidden-lg-and-up' :style="opacityStyle">
         <el-row class="row">
+          <el-col :xs="24" :sm="21" :md="21" :lg="4" :xl="4" class="height">
+            <span class="title" style="color:#fff">JingXu</span>
+          </el-col>
+
           <div class="hidden-lg-and-up" style="position:absolute;right:10px">
-            <div class="icon_menu height"> <span class="el-icon-menu" style="font-size:24px;color:#fff"></span></div>
+            <div class="icon_menu height"> <span class="el-icon-menu" style="font-size:24px;color:#fff" @click="drawer = true"></span></div>
           </div>
         </el-row>
       </div>
+
+      <drawer-biew :drawerFlag="drawer" @changeDrawer="drawerChange"></drawer-biew>
 
       <div class="personal_left">
         <div class="personal_box">
@@ -262,7 +268,9 @@
   </div>
 </template>
 <script>
+import drawer from '@/components/drawer';
 export default {
+  components: { 'drawer-biew': drawer },
   data() {
     return {
       activeName: 'pc',
@@ -270,9 +278,9 @@ export default {
       opacityStyle: {
         opacity: 0,
         height: '50px',
-        background: '#000',
+        background: '#000000',
       },
-
+      drawer: false,
     };
   },
   mounted() {
@@ -285,6 +293,8 @@ export default {
   },
   methods: {
 
+
+    /* 监听滚动事件 */
     handleScroll() {
       const top = window.pageYOffset || document.documentElement.scrollTop ||
         document.body.scrollTop
@@ -293,14 +303,14 @@ export default {
         opacity = opacity > 1 ? 1 : opacity;
         this.opacityStyle = {
           opacity, height: '50px',
-          background: '#000',
+          background: '#000000',
         };
         this.showAbs = false
       } else {
         this.opacityStyle = {
           opacity: 0,
           height: '50px',
-          background: '#000',
+          background: '#000000',
         };
         this.showAbs = true
       }
@@ -309,6 +319,7 @@ export default {
     getImgUrl(url) {
       return require("@/assets/images/" + url);
     },
+
     returnIndex() {
       this.$router.push('/')
     },
@@ -330,6 +341,9 @@ export default {
       })
       return arr;
     },
+    drawerChange(data) {
+      this.drawer = data;
+    },
   },
 };
 </script>
@@ -350,7 +364,7 @@ export default {
   height: 40px;
   font-size: 30px;
   color: #fff;
-  background: #000;
+  background: #000000;
   border-radius: 50%;
   text-align: center;
   position: absolute;
@@ -379,7 +393,7 @@ export default {
   content: "";
   width: 8px;
   height: 8px;
-  background: #000;
+  background: #000000;
   position: absolute;
   left: -2px;
   top: 50%;
