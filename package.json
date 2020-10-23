@@ -11,6 +11,7 @@
         "core-js": "^3.6.5",
         "element-ui": "^2.13.2",
         "lib-flexible": "^0.3.2",
+        "mavon-editor": "^2.9.0",
         "postcss-px2rem": "^0.3.0",
         "px2rem-loader": "^0.1.9",
         "vue": "^2.6.11",

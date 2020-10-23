@@ -180,6 +180,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 @media(min-width:960px) {
+
     .content,
     .contents {
         margin: 0 auto;
@@ -188,6 +189,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 @media(min-width:1264px) {
+
     .content,
     .contents {
         margin: 0 auto;
@@ -196,6 +198,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 @media(min-width:1904px) {
+
     .content,
     .contents {
         margin: 0 auto;
@@ -394,7 +397,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .el-pager li.active {
-    background: #fd5e53 !important;
+    background: #777 !important;
     border-radius: 50%;
     padding: 0;
     width: 26px;
@@ -417,7 +420,7 @@ body::-webkit-scrollbar-thumb:hover {
     position: relative;
     left: 40%;
     width: 60%;
-    background: #fff;
+    background: #f5f5f5;
 }
 
 .personal_box {
@@ -442,10 +445,12 @@ body::-webkit-scrollbar-thumb:hover {
         padding: 0 10px;
         box-sizing: border-box;
     }
+
     .text_right {
         text-align: center;
         padding: 5px 0;
     }
+
     .personal_box {
         position: static;
         right: 15%;
@@ -453,6 +458,7 @@ body::-webkit-scrollbar-thumb:hover {
         color: #fff;
         text-align: center;
     }
+
     .personal_right {
         width: 100%;
         left: 0;
@@ -526,7 +532,9 @@ body::-webkit-scrollbar-thumb:hover {
     color: #b9b8cc;
 }
 
-.menu_list .el-menu .el-menu-item.is-active {
+.menu_list .el-menu .el-menu-item.is-active,
+.menu_list .el-menu .el-menu-item:focus,
+.menu_list .el-menu .el-menu-item.is-active:focus {
     background: #171719;
     color: #fff;
 }
@@ -543,4 +551,34 @@ body::-webkit-scrollbar-thumb:hover {
 .el-drawer.ltr {
     background: #000000;
     width: 70% !important;
+}
+
+.v-note-show {
+    border: none !important;
+}
+
+.v-note-wrapper {
+    border-radius: 10px !important;
+    box-shadow: 10px 10px 10px #d0d0d0, -10px -10px 10px #fff !important;
+}
+
+.v-note-op {
+    border-bottom: 1px solid #dddd !important;
+}
+
+.v-note-op,
+.v-note-panel,
+.content-input-wrapper,
+.auto-textarea-wrapper,
+.auto-textarea-input {
+    background: #f5f5f5 !important;
+}
+
+.v-note-wrapper {
+    position: static !important;
+}
+
+.el-divider--horizontal {
+    margin: 0;
+    background: #dddd;
 }

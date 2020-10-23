@@ -1,9 +1,15 @@
 <template>
   <div id="app">
-    <router-view/>
+    <router-view />
+    <WaveItem />
   </div>
 </template>
-
+<script>
+import waves from '@/components/waves'
+export default {
+  components: { 'WaveItem': waves }
+}
+</script>
 <style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
