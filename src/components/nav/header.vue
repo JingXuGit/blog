@@ -1,5 +1,5 @@
 <template>
-  <div class='header' v-if="flag">
+  <div class='header' v-if="flag" :style="opacityStyle">
     <div style="max-width: 1420px;margin:0 auto;">
       <el-row class="row">
         <el-col :xs="24" :sm="21" :md="21" :lg="4" :xl="4" class="height">
@@ -31,7 +31,18 @@ export default {
     return {
       activeIndex: '/',
       flag: true,
+      showAbs: true,
+      opacityStyle: {
+        opacity: 1,
+        background: '#fff',
+      },
     };
+  },
+  mounted() {
+    window.addEventListener('scroll', this.handleScroll)
+  },
+  unmounted() {
+    window.removeEventListener('scroll', this.handleScroll)
   },
   watch: {
     $route: function () {
@@ -43,6 +54,28 @@ export default {
     this.fetchNavData();
   },
   methods: {
+    handleScroll() {
+      if (this.$route.path == '/') {
+        const top = window.pageYOffset || document.documentElement.scrollTop ||
+          document.body.scrollTop
+        if (top > 60) {
+          let opacity = top / 1000
+          opacity = opacity > 1 ? 1 : opacity;
+          this.opacityStyle = {
+            opacity,
+            background: '#fff',
+          };
+          this.showAbs = false
+        } else {
+          this.opacityStyle = {
+            opacity: 1,
+            background: '#fff',
+          };
+          this.showAbs = true
+        }
+      }
+    },
+
     fetchNavData() {
       // 初始化菜单激活项
       let current_path = this.$route.path; //获取当前路由
@@ -73,39 +106,4 @@ export default {
 };
 </script>
 <style scoped>
-.header {
-  width: 100%;
-  top: 0;
-  z-index: 9;
-  background: #ffff;
-  position: fixed;
-}
-.row {
-  position: relative;
-  width: 100%;
-  height: 60px; /* no */
-  text-align: center;
-  height: 100%;
-  margin: 0 auto;
-}
-.el-menu,
-.el-menu-item {
-  height: 100%;
-}
-.el-menu-top {
-  display: flex;
-  justify-content: flex-end;
-}
-.height {
-  height: 50px; /* no */
-  line-height: 50px; /* no */
-}
-.title:hover {
-  background: #f7f7f7;
-}
-.icon_menu {
-  width: 50px;
-  text-align: center;
-  cursor: pointer;
-}
 </style>

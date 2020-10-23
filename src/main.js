@@ -11,9 +11,15 @@ import 'element-ui/lib/theme-chalk/display.css';
 /* base css */
 import '@/assets/css/index.css';
 
-// import 'lib-flexible';
+import '@/assets/css/effects.css';
+
+
+
+import VuePreview from 'vue-preview';
 
 Vue.use(ElementUI);
+
+Vue.use(VuePreview);
 
 Vue.config.productionTip = false
 

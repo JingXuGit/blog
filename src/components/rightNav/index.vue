@@ -5,8 +5,8 @@
     <div class="right_model">
       <div class="title" style="text-align:left;height: 50px;line-height:50px;padding:0 8px">博主信息</div>
       <el-card>
-        <div class="shadow" style="background:#f5f5f5;width:50px;height:50px;border-radius:50%;margin:10px auto">
-          <el-avatar :size="50" :src="getImgUrl('avatar.jpg')"></el-avatar>
+        <div class="shadow" style="background:#f5f5f5;width:70px;height:70px;border-radius:50%;margin:10px auto">
+          <el-avatar :size="70" :src="getImgUrl('avatar.jpg')"></el-avatar>
         </div>
         <div class="title">JingXu</div>
         <ul style="display:flex" class="personal_message_list">
