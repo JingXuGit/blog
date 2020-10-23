@@ -545,7 +545,7 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .title:hover {
-    background: #f7f7f7;
+    /* background: #f7f7f7; */
 }
 
 .el-drawer.ltr {
