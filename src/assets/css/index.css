@@ -480,11 +480,16 @@ body::-webkit-scrollbar-thumb:hover {
     background: #1a1d53;
     color: #fff;
 }
+
 .essay_li:nth-child(2n) .essay_div:hover,
 .essay_li:nth-child(3n) .essay_div:hover,
 .essay_li:nth-child(5n) .essay_div:hover,
 .essay_div:hover {
     transform: rotate(0deg) scale(1.1);
+}
+
+.el-dialog {
+    width: 20%;
 }
 
 @media screen and (max-width: 768px) {
@@ -516,6 +521,21 @@ body::-webkit-scrollbar-thumb:hover {
 
     .essay_li {
         width: 100%;
+    }
+
+    .el-dialog {
+        width: 100%;
+        margin-top: 0vh !important;
+        height: 100%;
+    }
+
+    .el-dialog__wrapper {
+        height: 100%;
+        overflow: hidden;
+    }
+
+    body {
+        overflow: hidden;
     }
 }
 
@@ -580,6 +600,7 @@ body::-webkit-scrollbar-thumb:hover {
     margin: 10px;
     background: #171719;
     border-radius: 15px;
+    padding: 10px;
 }
 
 .menu_list .el-menu .el-menu-item {
@@ -635,4 +656,20 @@ body::-webkit-scrollbar-thumb:hover {
 .el-divider--horizontal {
     margin: 0;
     background: #dddd;
+}
+
+.el-dialog__body {
+    padding: 10px;
+}
+
+.el-dialog {
+    border-radius: 2px;
+}
+
+.el-form-item__label {
+    float: none;
+    display: block;
+    width: 60px !important;
+    line-height: 1;
+    text-align: left;
 }

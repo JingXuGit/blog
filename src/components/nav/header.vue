@@ -1,40 +1,45 @@
 <template>
-  <div>
-    <div class='header' v-if="flag" :style="opacityStyle">
-      <div style="max-width: 1420px;margin:0 auto;">
-        <el-row class="row">
-          <div class="hidden-lg-and-up" style="position:absolute;left:0px">
-            <div class="icon_menu height"> <span class="el-icon-back" style="font-size:24px" @click="navigateToNotes" v-if="$route.path == '/detail'"></span></div>
-          </div>
-          <el-col :xs="24" :sm="21" :md="21" :lg="4" :xl="4" class="height">
-            <span class="title">JingXu</span>
-          </el-col>
-          <el-col :lg="16" :xl="16" class="hidden-md-and-down height">
-            <el-menu :default-active="activeIndex" class="el-menu-top" mode="horizontal" @select="handleSelect" router>
-              <el-menu-item index="/">博客首页</el-menu-item>
-              <el-menu-item index="/notes">文章</el-menu-item>
-              <el-menu-item index="/resume">简历</el-menu-item>
-              <el-menu-item index="/essays">随笔</el-menu-item>
-              <el-menu-item index="/guestbook">留言</el-menu-item>
-            </el-menu>
-          </el-col>
-          <el-col :lg="4" :xl="4" class="height hidden-md-and-down">
-            <el-button type="primary" size="small">登录</el-button>
-          </el-col>
-          <div class="hidden-lg-and-up" style="position:absolute;right:0px">
-            <div class="icon_menu height"> <span class="el-icon-menu" style="font-size:24px" @click="drawer = true"></span></div>
-          </div>
-        </el-row>
-      </div>
+<header>
+  <div class='header' v-if="flag" :style="opacityStyle">
+    <div style="max-width: 1420px;margin:0 auto;">
+      <el-row class="row">
+        <div class="hidden-lg-and-up" style="position:absolute;left:0px">
+          <div class="icon_menu height"> <span class="el-icon-back" style="font-size:24px" @click="navigateToNotes" v-if="$route.path == '/detail'"></span></div>
+        </div>
+        <el-col :xs="24" :sm="21" :md="21" :lg="4" :xl="4" class="height">
+          <span class="title">JingXu</span>
+        </el-col>
+        <el-col :lg="16" :xl="16" class="hidden-md-and-down height">
+          <el-menu :default-active="activeIndex" class="el-menu-top" mode="horizontal" @select="handleSelect" router>
+            <el-menu-item index="/">博客首页</el-menu-item>
+            <el-menu-item index="/notes">文章</el-menu-item>
+            <el-menu-item index="/resume">简历</el-menu-item>
+            <el-menu-item index="/essays">随笔</el-menu-item>
+            <el-menu-item index="/guestbook">留言</el-menu-item>
+          </el-menu>
+        </el-col>
+        <el-col :lg="4" :xl="4" class="height hidden-md-and-down">
+          <el-button type="primary" size="small" @click="showLoginDialog">登录</el-button>
+        </el-col>
+        <div class="hidden-lg-and-up" style="position:absolute;right:0px">
+          <div class="icon_menu height"> <span class="el-icon-menu" style="font-size:24px" @click="drawer = true"></span></div>
+        </div>
+      </el-row>
     </div>
-    <drawer-biew :drawerFlag="drawer" @changeDrawer="drawerChange"></drawer-biew>
   </div>
-
+  <drawer-biew :drawerFlag="drawer" @changeDrawer="drawerChange"></drawer-biew>
+  <dialog-login :dialogVisible="dialogVisible" @close="closeDialog"></dialog-login>
+</header>
 </template>
+
 <script>
 import drawer from '@/components/drawer';
+import login from '@/components/login';
 export default {
-  components: { 'drawer-biew': drawer },
+  components: {
+    'drawer-biew': drawer,
+    'dialog-login': login
+  },
   data() {
     return {
       activeIndex: '/',
@@ -45,6 +50,7 @@ export default {
         background: '#fff',
       },
       drawer: false,
+      dialogVisible: false,
     };
   },
   mounted() {
@@ -106,8 +112,7 @@ export default {
       } else if (nav_path == "/resume") {
         this.flag = false;
         this.activeIndex = nav_path;
-      }
-      else {
+      } else {
         this.flag = true;
         this.activeIndex = nav_path;
       }
@@ -124,8 +129,15 @@ export default {
     drawerChange(data) {
       this.drawer = data;
     },
+    showLoginDialog() {
+      this.dialogVisible = true
+    },
+    closeDialog(data) {
+      this.dialogVisible = data
+    },
   },
 };
 </script>
+
 <style scoped>
 </style>
