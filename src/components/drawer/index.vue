@@ -23,10 +23,10 @@
             <i class="el-icon-document"></i>
             <span slot="title">简历</span>
           </el-menu-item>
-          <!-- <el-menu-item index="/essays">
+          <el-menu-item index="/essays">
             <i class="el-icon-chat-line-square"></i>
             <span slot="title">随笔</span>
-          </el-menu-item> -->
+          </el-menu-item>
           <el-menu-item index="/guestbook">
             <i class="el-icon-message"></i>
             <span slot="title">留言</span>

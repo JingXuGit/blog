@@ -93,27 +93,27 @@ const routes = [{
         },
     }]
 },
-// {
-//     path: '/essays',
-//     name: 'essays',
-//     type: '/essays',
-//     redirect: '/essays',
-//     component: () =>
-//         import ('@/views/Home.vue'),
-//     children: [{
-//         path: '/essays',
-//         meta: {
-//             title: '雪后燕瑶池,人间第一枝',
-//         },
-//         components: {
-//             default: () =>
-//                 import ('@/views/essays/index.vue'),
+{
+    path: '/essays',
+    name: 'essays',
+    type: '/essays',
+    redirect: '/essays',
+    component: () =>
+        import('@/views/Home.vue'),
+    children: [{
+        path: '/essays',
+        meta: {
+            title: '雪后燕瑶池,人间第一枝',
+        },
+        components: {
+            default: () =>
+                import('@/views/essays/index.vue'),
 
-//             top: () =>
-//                 import ('@/components/nav/header'),
-//         },
-//     }]
-// },
+            top: () =>
+                import('@/components/nav/header'),
+        },
+    }]
+},
 {
     path: '/guestbook',
     name: 'guestbook',
