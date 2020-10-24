@@ -14,15 +14,21 @@
 
             <el-timeline>
               <el-timeline-item timestamp="2018/4/12" placement="top" v-for="(item) in 15" :key='item'>
-                <el-card>
+                <div style="cursor:pointer">
                   <div style="display:inline-flex;justify-content:space-between;align-items:center">
-                    <el-image src="https://fuss10.elemecdn.com/2/11/6535bcfb26e4c79b48ddde44f4b6fjpeg.jpeg" lazy style="width:80px;height:80px;display:inline-block;"></el-image>
+                    <div class="hover ehover1" style="width: 100px; height: 100px;cursor:pointer;margin:5px;">
+                      <el-image src="https://fuss10.elemecdn.com/2/11/6535bcfb26e4c79b48ddde44f4b6fjpeg.jpeg" lazy style="width: 100%; height: 100%;display:inline-block;" fit="cover"></el-image>
+                      <div class="overlay">
+                        <h3>更新 Github 模板</h3>
+                      </div>
+                    </div>
                     <div style="margin-left:20px">
                       <p>2018/4/12 20:46</p>
-                      <h3 style="margin:10px 0;">更新 Github 模板</h3>
+                      <h3 style="margin:10px 0;" @click.stop="navigateToDetail" @touchend.stop="navigateToDetail">更新 Github 模板</h3>
                     </div>
                   </div>
-                </el-card>
+                </div>
+                <el-divider></el-divider>
               </el-timeline-item>
             </el-timeline>
 
@@ -54,6 +60,10 @@ export default {
   created() {
   },
   methods: {
+    navigateToDetail() {
+      console.log(1);
+      this.$router.push('/detail');
+    },
     handleSizeChange(val) {
       console.log(`每页 ${val} 条`);
     },

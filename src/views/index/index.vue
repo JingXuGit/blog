@@ -91,6 +91,11 @@ export default {
           title: "兴趣支撑梦想~",
           images: "banner3.jpg",
         },
+        {
+          id: 4,
+          title: "兴趣支撑梦想~",
+          images: "banner4.jpg",
+        },
       ],
     };
   },

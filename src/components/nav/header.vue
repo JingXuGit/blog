@@ -3,6 +3,9 @@
     <div class='header' v-if="flag" :style="opacityStyle">
       <div style="max-width: 1420px;margin:0 auto;">
         <el-row class="row">
+          <div class="hidden-lg-and-up" style="position:absolute;left:0px">
+            <div class="icon_menu height"> <span class="el-icon-back" style="font-size:24px" @click="navigateToNotes" v-if="$route.path == '/detail'"></span></div>
+          </div>
           <el-col :xs="24" :sm="21" :md="21" :lg="4" :xl="4" class="height">
             <span class="title">JingXu</span>
           </el-col>
@@ -11,7 +14,7 @@
               <el-menu-item index="/">博客首页</el-menu-item>
               <el-menu-item index="/notes">文章</el-menu-item>
               <el-menu-item index="/resume">简历</el-menu-item>
-              <el-menu-item index="/essays">随笔</el-menu-item>
+              <!-- <el-menu-item index="/essays">随笔</el-menu-item> -->
               <el-menu-item index="/guestbook">留言</el-menu-item>
             </el-menu>
           </el-col>
@@ -60,14 +63,16 @@ export default {
     this.fetchNavData();
   },
   methods: {
-
+    navigateToNotes() {
+      this.$router.push('/notes')
+    },
     /* 监听滚动事件 */
     handleScroll() {
       if (this.$route.path == '/') {
         const top = window.pageYOffset || document.documentElement.scrollTop ||
           document.body.scrollTop
         if (top > 60) {
-          let opacity = top /  300
+          let opacity = top / 300
           opacity = opacity > 1 ? 1 : opacity;
           this.opacityStyle = {
             opacity,
