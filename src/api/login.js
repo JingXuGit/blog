@@ -4,6 +4,10 @@ export const loginMethods = (data) => {
   const param = data
   return request.post('api/login', param)
 };
+export const registerMethods = (data) => {
+  const param = data
+  return request.post('api/register', param)
+};
 /* 验证token 是否过期 */
 // export const tokenVisibleMethods = (data) => {
 //     const param = data

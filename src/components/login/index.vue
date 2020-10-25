@@ -52,9 +52,7 @@
 </template>
 
 <script>
-import {
-  loginMethods
-} from '@/api/login'
+import { loginMethods, registerMethods } from '@/api/login'
 export default {
 
   data() {
@@ -62,45 +60,22 @@ export default {
       loginVisible: false,
       registVisible: false,
       rules: {
-        email: [{
-          required: true,
-          message: '请输入邮箱地址',
-          trigger: 'blur'
-        },
-        {
-          type: 'email',
-          message: '请输入正确的邮箱地址',
-          trigger: ['blur', 'change']
-        }
+        email: [
+          { required: true, message: '请输入邮箱地址', trigger: 'blur' },
+          { type: 'email', message: '请输入正确的邮箱地址', trigger: ['blur', 'change'] }
         ],
-        password: [{
-          required: true,
-          message: '请输入密码',
-          trigger: 'blur'
-        },
-        {
-          min: 6,
-          max: 16,
-          message: '长度在 6 到 16 个字符',
-          trigger: 'blur'
-        }
+        password: [
+          { required: true, message: '请输入密码', trigger: 'blur' },
+          { min: 6, max: 16, message: '长度在 6 到 16 个字符', trigger: 'blur' }
         ],
-        username: [{
-          required: true,
-          message: '请输入昵称',
-          trigger: 'blur'
-        },
-        {
-          min: 2,
-          max: 7,
-          message: '长度在 2 到 7 个字符',
-          trigger: 'blur'
-        }
+        username: [
+          { required: true, message: '请输入昵称', trigger: 'blur' },
+          { min: 2, max: 7, message: '长度在 2 到 7 个字符', trigger: 'blur' }
         ],
       },
       loginForm: {
-        email: '18310282832@163.com',
-        password: '123456',
+        email: '',
+        password: '',
       },
       registForm: {
         email: '',
@@ -127,7 +102,6 @@ export default {
             password: this.loginForm.password
           }
           const { data: data } = await loginMethods(params)
-          console.log(data);
           if (data.status != 200) return this.$message.error(data.message)
           this.$message.success({
             message: data.message,
@@ -136,19 +110,41 @@ export default {
           window.localStorage.setItem('user', JSON.stringify(data.data))
           this.$store.dispatch('setAccount', JSON.stringify(data.data));
           this.loginVisible = false;
-          this.$emit('close', false)
+          this.$emit('close', false);
+          this.loginForm = {
+            email: '',
+            password: '',
+          }
         } else {
-          console.log('error submit!!');
           return false;
         }
       });
     },
     regist() {
-      this.$refs.registForm.validate((valid) => {
+      this.$refs.registForm.validate(async (valid) => {
         if (valid) {
-          alert('submit!');
+          var params = {
+            email: this.registForm.email,
+            password: this.registForm.password,
+            username: this.registForm.username,
+            avatarImgUrl: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png'
+          }
+          const { data: data } = await registerMethods(params)
+          if (data.status != 200) return this.$message.error(data.message);
+          console.log(data)
+          this.$message.success({
+            message: data.message,
+            duration: '2000'
+          });
+          this.loginForm.email = this.registForm.email;
+          this.loginVisible = true;
+          this.registVisible = false;
+          this.registForm = {
+            email: '',
+            password: '',
+            username: '',
+          }
         } else {
-          console.log('error submit!!');
           return false;
         }
       });

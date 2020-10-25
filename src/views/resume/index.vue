@@ -276,7 +276,7 @@ export default {
       activeName: 'pc',
       showAbs: true,
       opacityStyle: {
-        opacity: 0,
+        opacity: 0.2,
         height: '50px',
         background: '#000000',
       },
@@ -308,7 +308,7 @@ export default {
         this.showAbs = false
       } else {
         this.opacityStyle = {
-          opacity: 0,
+          opacity: 0.2,
           height: '50px',
           background: '#000000',
         };

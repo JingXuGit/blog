@@ -16,16 +16,19 @@
               <el-menu-item index="/resume">简历</el-menu-item>
               <el-menu-item index="/essays">随笔</el-menu-item>
               <el-menu-item index="/guestbook">留言</el-menu-item>
+              <el-menu-item index="/editor" v-if="role == 'admin'">编辑文章</el-menu-item>
             </el-menu>
           </el-col>
-          <el-col :lg="4" :xl="4" class="height hidden-md-and-down" v-if="role == null">
+          <el-col :lg="4" :xl="4" class="height hidden-md-and-down" v-if="avatarImgUrl == null">
             <el-button type="primary" size="small" @click="showLoginDialog">登录</el-button>
           </el-col>
           <el-col :lg="4" :xl="4" class="height hidden-md-and-down" v-else>
-            <el-dropdown trigger="click" placement="bottom" @click="logout">
-              <div style="margin-top: 7px;cursor:pointer">
-                <el-avatar size="medium" :src="role"></el-avatar>
+            <el-dropdown trigger="click" placement="bottom" @click="logout" style="height:50px">
+              <div style="height: 100%;display: flex;align-items: center;cursor:pointer">
+                <el-avatar size="medium" :src="avatarImgUrl"></el-avatar>
+                <span style="margin-left:10px;font-size:12px;user-select:none;">{{username}}</span>
               </div>
+
               <el-dropdown-menu slot="dropdown">
                 <li @click="logout">
                   <el-dropdown-item icon="el-icon-error">退出登录</el-dropdown-item>
@@ -64,7 +67,9 @@ export default {
       },
       drawer: false,
       dialogVisible: false,
-      role: JSON.parse(this.$store.state.blog.user) == null ? null : JSON.parse(this.$store.state.blog.user).avatarImgUrl
+      avatarImgUrl: JSON.parse(this.$store.state.blog.user) == null ? null : JSON.parse(this.$store.state.blog.user).avatarImgUrl,
+      username: JSON.parse(this.$store.state.blog.user) == null ? null : JSON.parse(this.$store.state.blog.user).username,
+      role: JSON.parse(this.$store.state.blog.user) == null ? null : JSON.parse(this.$store.state.blog.user).role,
     };
   },
 
@@ -81,8 +86,12 @@ export default {
     },
     "$store.state.blog.user"(newval) {
       if (newval != null) {
-        this.role = JSON.parse(newval).avatarImgUrl
+        this.avatarImgUrl = JSON.parse(newval).avatarImgUrl
+        this.username = JSON.parse(newval).username
+        this.role = JSON.parse(newval).role
       } else {
+        this.avatarImgUrl = null
+        this.username = null
         this.role = null
       }
     },
@@ -160,6 +169,9 @@ export default {
     logout() {
       this.$store.dispatch('setAccount', null)
       window.localStorage.clear();
+      if(this.$route.path == '/editor'){
+        this.$router.replace('/')
+      }
       this.$message.success({
         message: '您已退出登录',
         duration: '1000'

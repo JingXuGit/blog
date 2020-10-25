@@ -135,6 +135,27 @@ const routes = [{
         },
     }]
 },
+{
+    path: '/editor',
+    name: 'editor',
+    type: '/editor',
+    redirect: '/editor',
+    component: () =>
+        import('@/views/Home.vue'),
+    children: [{
+        path: '/editor',
+        meta: {
+            title: '雪后燕瑶池,人间第一枝',
+        },
+        components: {
+            default: () =>
+                import('@/views/editor/index.vue'),
+
+            top: () =>
+                import('@/components/nav/header'),
+        },
+    }]
+},
 ]
 
 const router = new VueRouter({

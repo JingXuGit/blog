@@ -3,23 +3,21 @@
     <div style="margin: 0 auto; max-width: 1080px !important; padding: 0 10px">
 
       <el-row style="margin:20px 0" :gutter="10">
-        <el-col :xs="24" :sm="24" :md="24" :lg="17" :xl="17">
+        <el-col :xs="24" :sm="24" :md="24" :lg="24" :xl="24">
           <div>
             <div class="flex_between" style="height: 50px;padding:0 8px">
-              <div class="title">留言</div>
+              <div class="title">编辑文档</div>
             </div>
           </div>
           <!-- <el-card> -->
 
           <mavon-editor v-model="context" :toolbars="toolbars" defaultOpen='edit' :subfield="true" placeholder='请在这里填写留言...' @keydown="editorKeyDown" />
           <!-- </el-card> -->
-          <div style="text-align:left;margin:10px 0;">欢迎留言~~</div>
           <div style="text-align:right;margin:10px 0;">
             <el-button type="primary" size="mini">保存</el-button>
           </div>
         </el-col>
 
-        <rightNav />
       </el-row>
 
     </div>
@@ -27,10 +25,8 @@
   </div>
 </template>
 <script>
-import rightNav from '@/components/rightNav'
 export default {
   components: {
-    rightNav
   },
   data() {
     return {

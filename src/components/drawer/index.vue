@@ -8,7 +8,7 @@
       <div style="background:#f5f5f5;width:70px;height:70px;border-radius:50%;margin:10px auto">
         <el-avatar :size="70" :src="getImgUrl('avatar.jpg')"></el-avatar>
       </div>
-      <h2 class="title" style="color:#fff">Jingxu</h2>
+      <h2 class="title" style="color:#fff;font-size:16px!important">{{username}}</h2>
       <div class="menu_list">
         <el-menu :default-active="activeIndex" class="el-menu-vertical-demo" @select="handleSelect" router>
           <el-menu-item index="/">
@@ -56,7 +56,8 @@ export default {
       activeIndex: '/',
       drawer: false,
       dialogVisible: false,
-      role: JSON.parse(this.$store.state.blog.user) == null ? null : JSON.parse(this.$store.state.blog.user).role
+      role: JSON.parse(this.$store.state.blog.user) == null ? null : JSON.parse(this.$store.state.blog.user).role,
+      username: JSON.parse(this.$store.state.blog.user) == null ? 'JingXu' : JSON.parse(this.$store.state.blog.user).username
     };
   },
   watch: {
@@ -69,9 +70,11 @@ export default {
     },
     "$store.state.blog.user"(newval) {
       if (newval != null) {
-        this.role = JSON.parse(newval).avatarImgUrl
+        this.role = JSON.parse(newval).role
+        this.username = JSON.parse(newval).username
       } else {
-        this.role = null
+        this.role = null;
+        this.username = 'JingXu';
       }
     },
   },
