@@ -39,7 +39,7 @@ ul {
 
 i {
     font-style: normal;
-    color: #409EFF;
+    color: #000000;
 }
 
 #app {
@@ -179,36 +179,13 @@ body::-webkit-scrollbar-thumb:hover {
     margin: 10px 0;
 }
 
-@media(min-width:960px) {
-
-    .content,
-    .contents {
-        margin: 0 auto;
-        max-width: 900px
-    }
+.el-drawer.ltr {
+    background: #000000;
+    width: 60% !important;
 }
 
-@media(min-width:1264px) {
 
-    .content,
-    .contents {
-        margin: 0 auto;
-        max-width: 1185px
-    }
-}
 
-@media(min-width:1904px) {
-
-    .content,
-    .contents {
-        margin: 0 auto;
-        max-width: 1785px
-    }
-}
-
-.content {
-    margin-top: 60px;
-}
 
 .el-carousel__item {
     border-radius: 10px;
@@ -539,6 +516,81 @@ body::-webkit-scrollbar-thumb:hover {
     }
 }
 
+@media(min-width:960px) {
+
+    .content,
+    .contents {
+        margin: 0 auto;
+        max-width: 900px
+    }
+
+
+    .essay_li {
+        width: 30%;
+        display: inline-flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: 30px 0;
+        cursor: pointer;
+    }
+
+    .el-drawer.ltr {
+        background: #000000;
+        width: 40% !important;
+    }
+}
+
+@media(min-width:768px) {
+
+
+    .essay_li {
+        width: 40%;
+        display: inline-flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: 30px 10px;
+        cursor: pointer;
+    }
+
+    .content,
+    .contents {
+        margin: 0 auto;
+        max-width: 900px
+    }
+
+    .el-drawer.ltr {
+        background: #000000;
+        width: 30% !important;
+    }
+}
+
+@media(min-width:1264px) {
+
+    .essay_li {
+        width: 30%;
+        display: inline-flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: 30px 0;
+        cursor: pointer;
+    }
+
+    .content,
+    .contents {
+        margin: 0 auto;
+        max-width: 1185px
+    }
+}
+
+@media(min-width:1904px) {
+
+    .content,
+    .contents {
+        margin: 0 auto;
+        max-width: 1785px
+    }
+}
+
 .icon_menu {
     width: 50px;
     text-align: center;
@@ -623,10 +675,7 @@ body::-webkit-scrollbar-thumb:hover {
     /* background: #f7f7f7; */
 }
 
-.el-drawer.ltr {
-    background: #000000;
-    width: 70% !important;
-}
+
 
 .v-note-show {
     border: none !important;
@@ -672,4 +721,13 @@ body::-webkit-scrollbar-thumb:hover {
     width: 60px !important;
     line-height: 1;
     text-align: left;
+}
+
+.content {
+    margin-top: 60px;
+}
+.el-dropdown-menu__item:focus,
+.el-dropdown-menu__item:not(.is-disabled):hover{
+    background: #d0d0d0;
+    color: #000000;
 }
