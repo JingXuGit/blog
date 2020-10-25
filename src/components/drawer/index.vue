@@ -6,7 +6,7 @@
         <div class="el-icon-bell" style="color:#fff;font-size:22px;"></div>
       </div>
       <div style="background:#f5f5f5;width:70px;height:70px;border-radius:50%;margin:10px auto">
-        <el-avatar :size="70" :src="getImgUrl('avatar.jpg')"></el-avatar>
+        <el-avatar :size="70" :src="avatarImgUrl"></el-avatar>
       </div>
       <h2 class="title" style="color:#fff;font-size:16px!important">{{username}}</h2>
       <div class="menu_list">
@@ -57,7 +57,8 @@ export default {
       drawer: false,
       dialogVisible: false,
       role: JSON.parse(this.$store.state.blog.user) == null ? null : JSON.parse(this.$store.state.blog.user).role,
-      username: JSON.parse(this.$store.state.blog.user) == null ? 'JingXu' : JSON.parse(this.$store.state.blog.user).username
+      username: JSON.parse(this.$store.state.blog.user) == null ? null : JSON.parse(this.$store.state.blog.user).username,
+      avatarImgUrl: JSON.parse(this.$store.state.blog.user) == null ? null : JSON.parse(this.$store.state.blog.user).avatarImgUrl,
     };
   },
   watch: {
@@ -72,9 +73,11 @@ export default {
       if (newval != null) {
         this.role = JSON.parse(newval).role
         this.username = JSON.parse(newval).username
+        this.avatarImgUrl = JSON.parse(newval).avatarImgUrl
       } else {
         this.role = null;
         this.username = 'JingXu';
+        this.avatarImgUrl = null;
       }
     },
   },
