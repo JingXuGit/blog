@@ -184,9 +184,6 @@ body::-webkit-scrollbar-thumb:hover {
     width: 60% !important;
 }
 
-
-
-
 .el-carousel__item {
     border-radius: 10px;
 }
@@ -469,6 +466,12 @@ body::-webkit-scrollbar-thumb:hover {
     width: 20%;
 }
 
+.dialog_ .el-dialog {
+    width: 50%;
+    margin-top: 2vh !important;
+    border-radius: 10px;
+}
+
 @media screen and (max-width: 768px) {
     .personal_left {
         position: static;
@@ -477,12 +480,10 @@ body::-webkit-scrollbar-thumb:hover {
         padding: 0 10px;
         box-sizing: border-box;
     }
-
     .text_right {
         text-align: center;
         padding: 5px 0;
     }
-
     .personal_box {
         position: static;
         right: 15%;
@@ -490,41 +491,38 @@ body::-webkit-scrollbar-thumb:hover {
         color: #fff;
         text-align: center;
     }
-
     .personal_right {
         width: 100%;
         left: 0;
     }
-
     .essay_li {
         width: 100%;
     }
-
-    .el-dialog {
+    .el-dialog,
+    .dialog_ .el-dialog {
         width: 100%;
         margin-top: 0vh !important;
         height: 100%;
     }
-
     .el-dialog__wrapper {
         height: 100%;
         overflow: hidden;
     }
-
+    .dialog_ .el-dialog__body {
+        height: 90%;
+        overflow: auto;
+    }
     body {
         overflow: hidden;
     }
 }
 
 @media(min-width:960px) {
-
     .content,
     .contents {
         margin: 0 auto;
         max-width: 900px
     }
-
-
     .essay_li {
         width: 30%;
         display: inline-flex;
@@ -533,7 +531,6 @@ body::-webkit-scrollbar-thumb:hover {
         margin: 30px 0;
         cursor: pointer;
     }
-
     .el-drawer.ltr {
         background: #000000;
         width: 40% !important;
@@ -541,8 +538,6 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 @media(min-width:768px) {
-
-
     .essay_li {
         width: 40%;
         display: inline-flex;
@@ -551,13 +546,11 @@ body::-webkit-scrollbar-thumb:hover {
         margin: 30px 10px;
         cursor: pointer;
     }
-
     .content,
     .contents {
         margin: 0 auto;
         max-width: 900px
     }
-
     .el-drawer.ltr {
         background: #000000;
         width: 30% !important;
@@ -565,7 +558,6 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 @media(min-width:1264px) {
-
     .essay_li {
         width: 30%;
         display: inline-flex;
@@ -574,7 +566,6 @@ body::-webkit-scrollbar-thumb:hover {
         margin: 30px 0;
         cursor: pointer;
     }
-
     .content,
     .contents {
         margin: 0 auto;
@@ -583,7 +574,6 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 @media(min-width:1904px) {
-
     .content,
     .contents {
         margin: 0 auto;
@@ -610,9 +600,9 @@ body::-webkit-scrollbar-thumb:hover {
 
 .preview figure {
     float: left;
-    width: 30%;
-    height: calc(30vw - 0px);
-    margin: 1.5%;
+    width: 100px;
+    height: auto;
+    /* margin: 1.5%; */
 }
 
 .preview figure img {
@@ -675,15 +665,13 @@ body::-webkit-scrollbar-thumb:hover {
     /* background: #f7f7f7; */
 }
 
-
-
 .v-note-show {
     border: none !important;
 }
 
 .v-note-wrapper {
     border-radius: 10px !important;
-    box-shadow: 10px 10px 10px #d0d0d0, -10px -10px 10px #fff !important;
+    /* box-shadow: 10px 10px 10px #d0d0d0, -10px -10px 10px #fff !important; */
 }
 
 .v-note-op {
@@ -715,10 +703,10 @@ body::-webkit-scrollbar-thumb:hover {
     border-radius: 2px;
 }
 
-.el-form-item__label {
+.forms .el-form-item__label {
     float: none;
     display: block;
-    width: 60px !important;
+    width: 100px !important;
     line-height: 1;
     text-align: left;
 }
@@ -726,8 +714,14 @@ body::-webkit-scrollbar-thumb:hover {
 .content {
     margin-top: 60px;
 }
+
 .el-dropdown-menu__item:focus,
-.el-dropdown-menu__item:not(.is-disabled):hover{
+.el-dropdown-menu__item:not(.is-disabled):hover {
     background: #d0d0d0;
     color: #000000;
+}
+
+.el-table th,
+.el-table tr {
+    background: #f5f5f5;
 }

@@ -10,7 +10,7 @@
         <div style="color:#ec558c" @click="toRegist">去注册</div>
       </div>
       <div style="text-align:left;font-size:16px;margin:10px 0 20px 10px;font-weight:600">请先填写以下信息进行登录</div>
-      <el-form :model="loginForm" ref="loginForm" label-width="0px" style="margin:0px 20px 0 10px;padding-top:20px;user-select:none" :rules="rules">
+      <el-form :model="loginForm" ref="loginForm" label-width="0px" class="forms" style="margin:0px 20px 0 10px;padding-top:20px;user-select:none" :rules="rules">
         <el-form-item label="邮箱" prop="email">
           <el-input v-model="loginForm.email" size="mini" placeholder="请输入邮箱"></el-input>
         </el-form-item>
@@ -32,7 +32,7 @@
         <div style="color:#ec558c" @click="toLogin">去登录</div>
       </div>
       <div style="text-align:left;font-size:16px;margin:10px 0 20px 10px;font-weight:600">请先填写以下信息进行注册</div>
-      <el-form :model="registForm" ref="registForm" label-width="0px" style="margin:0px 20px 0 10px;padding-top:20px;user-select:none" :rules="rules">
+      <el-form :model="registForm" ref="registForm" class="forms" label-width="0px" style="margin:0px 20px 0 10px;padding-top:20px;user-select:none" :rules="rules">
         <el-form-item label="邮箱" prop="email">
           <el-input v-model="registForm.email" size="mini" placeholder="请输入邮箱"></el-input>
         </el-form-item>
