@@ -104,7 +104,7 @@ export default {
     return {
       currentPage: 1,
       pageSize: 10,
-      total: null,
+      total: 0,
       addOrEdit: true,
       dialogVisible: false,
       tableData: [],
@@ -203,14 +203,17 @@ export default {
       }
       const { data: data } = await selectArticleMethods(params);
       if (data.status != 200) return this.$message.error(data.message);
-      data.data.article.forEach(item => {
-        if (item.createTime != null) {
-          item.createTime = this.dayjs(item.createTime).format("YYYY-MM-DD HH:mm:ss")
-        }
-        if (item.updateTime != null) {
-          item.updateTime = this.dayjs(item.updateTime).format("YYYY-MM-DD HH:mm:ss")
-        }
-      })
+      if (data.data.article) {
+        data.data.article.forEach(item => {
+          if (item.createTime != null) {
+            item.createTime = this.dayjs(item.createTime).format("YYYY-MM-DD HH:mm:ss")
+          }
+          if (item.updateTime != null) {
+            item.updateTime = this.dayjs(item.updateTime).format("YYYY-MM-DD HH:mm:ss")
+          }
+        })
+      }
+
       this.tableData = data.data.article;
       this.total = data.data.total
     },
