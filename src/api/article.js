@@ -16,3 +16,7 @@ export const deleteOneArticle = (data) => {
     const param = data
     return request.post('api/deleteOneArticle', param)
 };
+export const uploadImage = (data) => {
+    const param = data
+    return request.post('api/uploadImage', param)
+};

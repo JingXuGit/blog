@@ -78,7 +78,7 @@
                   </el-upload>
                 </el-form-item>
                 <el-form-item label="内容" prop="articleContent">
-                  <mavon-editor v-model="dialogForm.articleContent" :toolbars="toolbars" defaultOpen='edit' :subfield="false" placeholder='请在这里输入文章/随笔内容...' @keydown="editorKeyDown" style="margin-top:10px" />
+                  <mavon-editor v-model="dialogForm.articleContent" :toolbars="toolbars" defaultOpen='edit' :subfield="false" placeholder='请在这里输入文章/随笔内容...' @keydown="editorKeyDown" ref=md @imgAdd="$imgAdd" style="margin-top:10px" />
                 </el-form-item>
               </el-form>
               <div style="text-align:right;margin:10px 0;">
@@ -96,7 +96,7 @@
   </div>
 </template>
 <script>
-import { addArticleMethods, selectArticleMethods, selectOneArticle, deleteOneArticle } from '@/api/article';
+import { addArticleMethods, selectArticleMethods, selectOneArticle, deleteOneArticle, uploadImage } from '@/api/article';
 export default {
   components: {
   },
@@ -193,6 +193,18 @@ export default {
 
     editorKeyDown() {
 
+    },
+    async $imgAdd(pos, $file) {
+      // 将图片上传到服务器.
+      var base64Data = $file.miniurl.replace(/^data:image\/\w+;base64,/, "")
+      // let params = { base64: base64Data }
+      // console.log(params);
+      const { data: data } = await uploadImage({ "imgData": base64Data })
+      console.log(data);
+      // uploadImg(params).then(res => {
+      //   // 回显
+      //   this.$refs.md.$img2Url(pos, 服务器返回的路径);
+      // })
     },
 
     /* 查询文章 */
