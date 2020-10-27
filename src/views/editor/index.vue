@@ -15,7 +15,7 @@
 
           <el-table :data="tableData" border class="shadow" stripe size="mini" style="border-radius:10px;width: 100%;background:#f5f5f5;">
             <el-table-column prop="articleTitle" align="center" label="文章标题"></el-table-column>
-            <el-table-column prop="articleContent" align="center" label="文章内容"></el-table-column>
+            <!-- <el-table-column prop="articleContent" align="center" label="文章内容"></el-table-column> -->
             <el-table-column prop="cover" align="center" label="封面图">
               <template slot-scope="scope">
                 <div>
@@ -97,6 +97,7 @@
 </template>
 <script>
 import { addArticleMethods, selectArticleMethods, selectOneArticle, deleteOneArticle, uploadImage } from '@/api/article';
+import myConfig from '@/config';
 export default {
   components: {
   },
@@ -197,14 +198,8 @@ export default {
     async $imgAdd(pos, $file) {
       // 将图片上传到服务器.
       var base64Data = $file.miniurl.replace(/^data:image\/\w+;base64,/, "")
-      // let params = { base64: base64Data }
-      // console.log(params);
       const { data: data } = await uploadImage({ "imgData": base64Data })
-      console.log(data);
-      // uploadImg(params).then(res => {
-      //   // 回显
-      //   this.$refs.md.$img2Url(pos, 服务器返回的路径);
-      // })
+      this.$refs.md.$img2Url(pos, myConfig.baseUrl + data.data.imageUrl.replace(/.\//, ''));
     },
 
     /* 查询文章 */
@@ -262,7 +257,6 @@ export default {
     async editArticle(id) {
       this.addOrEdit = false;
       this.dialogVisible = true;
-      console.log(id)
       const { data: data } = await selectOneArticle({ id: id });
       if (data.status != 200) return this.$message.error(data.message);
       this.dialogForm = {
@@ -279,7 +273,6 @@ export default {
       this.$refs.dialogForm.validate(async (valid) => {
         if (valid) {
           const { data: data } = await addArticleMethods(this.dialogForm);
-          console.log(data);
           if (data.status != 200) return this.$message.error(data.message);
           this.dialogVisible = false;
           this.selectArticle();

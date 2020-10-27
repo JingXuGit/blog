@@ -131,7 +131,6 @@ export default {
           }
           const { data: data } = await registerMethods(params)
           if (data.status != 200) return this.$message.error(data.message);
-          console.log(data)
           this.$message.success({
             message: data.message,
             duration: '2000'

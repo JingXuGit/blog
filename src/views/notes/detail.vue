@@ -7,12 +7,14 @@
         <el-col :xs="24" :sm="24" :md="24" :lg="17" :xl="17">
           <div>
             <div class="flex_between" style="height: 50px;padding:0 8px">
-              <div class="title">文章标题</div>
+              <div class="title">{{articleObj.articleTitle}}</div>
             </div>
           </div>
 
           <el-card>
-            <el-image src="https://fuss10.elemecdn.com/2/11/6535bcfb26e4c79b48ddde44f4b6fjpeg.jpeg" lazy style="width:100%;height:100%;display:inline-block;"></el-image>
+            <el-image :src="articleObj.cover" lazy style="width:100%;height:100%;display:inline-block;"></el-image>
+            <mavon-editor class="md" :value="articleObj.articleContent" :subfield="false" :defaultOpen="'preview'" :toolbarsFlag="false" :editable="false" :scrollStyle="true" :ishljs="true" />
+
             <mavon-editor v-model="context" :toolbars="toolbars" defaultOpen='edit' :subfield="false" placeholder='请在这里填写留言...' @keydown="editorKeyDown" />
             <div style="text-align:left;margin:10px 0;">欢迎评论~~</div>
             <div style="text-align:right;margin:10px 0;">
@@ -29,6 +31,7 @@
   </div>
 </template>
 <script>
+import { selectOneArticle } from '@/api/article'
 import rightNav from '@/components/rightNav'
 export default {
   components: {
@@ -36,7 +39,8 @@ export default {
   },
   data() {
     return {
-      context:'',
+      context: '',
+      articleObj: {},
       toolbars: {
         bold: false, // 粗体
         italic: false, // 斜体
@@ -76,9 +80,21 @@ export default {
     };
   },
   created() {
-
+    this.selectArticle(this.$route.query.id)
   },
   methods: {
+    async selectArticle(id) {
+      const { data: data } = await selectOneArticle({ id: id });
+      if (data.status != 200) return this.$message.error(data.message);
+      this.articleObj = data.data;
+      // this.dialogForm = {
+      //   id: data.data.id,
+      //   articleTitle: data.data.articleTitle,
+      //   keyword: data.data.keyword,
+      //   articleContent: data.data.articleContent,
+      //   cover: data.data.cover,
+      // }
+    },
     editorKeyDown() {
 
     },

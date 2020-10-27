@@ -113,7 +113,11 @@ export default {
   },
   methods: {
     async selectEssays() {
-      const { data: data } = await selectEssaysMethods();
+      const params = {
+        currentPage: 1,
+        pageSize: 100,
+      }
+      const { data: data } = await selectEssaysMethods(params);
       if (data.status != 200) return this.$message.error(data.message);
       data.data.forEach(item => {
         if (item.createTime != null) {

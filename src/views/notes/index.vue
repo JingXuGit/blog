@@ -13,18 +13,18 @@
           <el-card>
 
             <el-timeline>
-              <el-timeline-item timestamp="2018/4/12" placement="top" v-for="(item) in 15" :key='item'>
+              <el-timeline-item :timestamp="item.createTime" placement="top" v-for="(item,index) in articleArr" :key='index'>
                 <div style="cursor:pointer">
                   <div style="display:inline-flex;justify-content:space-between;align-items:center">
                     <div class="hover ehover1" style="width: 100px; height: 100px;cursor:pointer;margin:5px;">
-                      <el-image src="https://fuss10.elemecdn.com/2/11/6535bcfb26e4c79b48ddde44f4b6fjpeg.jpeg" lazy style="width: 100%; height: 100%;display:inline-block;" fit="cover"></el-image>
+                      <el-image :src="item.cover" lazy style="width: 100%; height: 100%;display:inline-block;" fit="cover"></el-image>
                       <div class="overlay">
-                        <h3>更新 Github 模板</h3>
+                        <h3>{{item.articleTitle}}</h3>
                       </div>
                     </div>
                     <div style="margin-left:20px">
-                      <p>2018/4/12 20:46</p>
-                      <h3 style="margin:10px 0;" @click.stop="navigateToDetail" @touchend.stop="navigateToDetail">更新 Github 模板</h3>
+                      <p>{{item.createTime}}</p>
+                      <h3 style="margin:10px 0;" @click.stop="navigateToDetail(item.id)" @touchend.stop="navigateToDetail(item.id)">{{item.articleTitle}}</h3>
                     </div>
                   </div>
                 </div>
@@ -46,6 +46,7 @@
   </div>
 </template>
 <script>
+import { selectArticleMethods } from '@/api/article'
 import rightNav from '@/components/rightNav'
 export default {
   components: {
@@ -54,21 +55,45 @@ export default {
   data() {
     return {
       currentPage: 1,
-      total: 20,
+      pageSize: 10,
+      total: 0,
+      articleArr: [],
     };
   },
   created() {
+    this.selectArticle();
   },
   methods: {
-    navigateToDetail() {
-      console.log(1);
-      this.$router.push('/detail');
+    async selectArticle() {
+      const params = {
+        currentPage: this.currentPage,
+        pageSize: this.pageSize,
+      }
+      const { data: data } = await selectArticleMethods(params);
+      if (data.status != 200) return this.$message.error(data.message);
+      if (data.data.article) {
+        data.data.article.forEach(item => {
+          if (item.createTime != null) {
+            item.createTime = this.dayjs(item.createTime).format("YYYY-MM-DD HH:mm:ss")
+          }
+          if (item.updateTime != null) {
+            item.updateTime = this.dayjs(item.updateTime).format("YYYY-MM-DD HH:mm:ss")
+          }
+        })
+      }
+      this.articleArr = data.data.article;
+      this.total = data.data.total
+    },
+
+    navigateToDetail(id) {
+      this.$router.push('/detail?id=' + id);
     },
     handleSizeChange(val) {
       console.log(`每页 ${val} 条`);
     },
     handleCurrentChange(val) {
-      console.log(`当前页: ${val}`);
+      this.currentPage = val;
+      this.selectArticle()
     }
   },
 };
