@@ -6,7 +6,7 @@
         <div class="el-icon-bell" style="color:#fff;font-size:22px;"></div>
       </div>
       <div style="background:#f5f5f5;width:70px;height:70px;border-radius:50%;margin:10px auto">
-        <el-avatar :size="70" :src="avatarImgUrl"></el-avatar>
+        <el-avatar :size="70" :src="avatarImgUrl?avatarImgUrl:getImgUrl('avatar.jpg')"></el-avatar>
       </div>
       <h2 class="title" style="color:#fff;font-size:16px!important">{{username}}</h2>
       <div class="menu_list">
@@ -30,6 +30,10 @@
           <el-menu-item index="/guestbook">
             <i class="el-icon-message"></i>
             <span slot="title">留言</span>
+          </el-menu-item>
+          <el-menu-item index="/editor" v-if="role == 'admin'">
+            <i class="el-icon-edit"></i>
+            <span slot="title">编辑文章</span>
           </el-menu-item>
         </el-menu>
       </div>
@@ -57,7 +61,7 @@ export default {
       drawer: false,
       dialogVisible: false,
       role: JSON.parse(this.$store.state.blog.user) == null ? null : JSON.parse(this.$store.state.blog.user).role,
-      username: JSON.parse(this.$store.state.blog.user) == null ? null : JSON.parse(this.$store.state.blog.user).username,
+      username: JSON.parse(this.$store.state.blog.user) == null ? '李景旭' : JSON.parse(this.$store.state.blog.user).username,
       avatarImgUrl: JSON.parse(this.$store.state.blog.user) == null ? null : JSON.parse(this.$store.state.blog.user).avatarImgUrl,
     };
   },
@@ -130,6 +134,9 @@ export default {
       this.$store.dispatch('setAccount', null)
       window.localStorage.clear();
       this.$refs.drawer.closeDrawer()
+      if (this.$route.path == '/editor') {
+        this.$router.replace('/')
+      }
       this.$message.success({
         message: '您已退出登录',
         duration: '1000'

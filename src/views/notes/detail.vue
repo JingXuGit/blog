@@ -8,6 +8,7 @@
           <div>
             <div class="flex_between" style="height: 50px;padding:0 8px">
               <div class="title">{{articleObj.articleTitle}}</div>
+              <div class="title">#{{articleObj.keyword}}</div>
             </div>
           </div>
 

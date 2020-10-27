@@ -29,7 +29,7 @@ body {
 
 a {
     text-decoration: none;
-    color: #409EFF;
+    color: #000;
 }
 
 ul {
@@ -254,7 +254,8 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .essays {
-    padding: 6px;
+    min-height: 100px;
+    padding: 15px;
     border: 1px solid #e0e0e0;
     margin: 20px;
     text-align: left;
@@ -327,6 +328,7 @@ body::-webkit-scrollbar-thumb:hover {
 .personal_message_list_li {
     text-align: center;
     width: 33%;
+    cursor: pointer;
 }
 
 .personal_message_list_li p:first-child {

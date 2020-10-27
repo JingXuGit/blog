@@ -10,19 +10,43 @@
         </div>
         <div class="title">JingXu</div>
         <ul style="display:flex" class="personal_message_list">
-          <li class="personal_message_list_li">
+          <li class="personal_message_list_li" @click="navigateToNotes" @touchend="navigateToNotes">
             <p>文章</p>
-            <p>17</p>
+            <p>{{blogDetailsObj.articleNum}}篇</p>
           </li>
           <li class="personal_message_list_li">
             <p>标签</p>
-            <p>13</p>
+            <p>{{labelNum}}种</p>
           </li>
-          <li class="personal_message_list_li">
-            <p>分类</p>
-            <p>2</p>
+          <li class="personal_message_list_li" @click="navigateToEssays" @touchend="navigateToEssays">
+            <p>随笔</p>
+            <p>{{blogDetailsObj.essaysNum}}篇</p>
           </li>
         </ul>
+
+        <div class="icons">
+          <a href="https://weibo.com/6243831592/profile?topnav=1&wvr=6" target="_blank">
+            <span class="iconfont icon-weibo"></span>
+          </a>
+          <a href="https://github.com/" target="_blank">
+            <span class="iconfont icon-gongzhonghao"></span>
+          </a>
+          <a href="https://github.com/" target="_blank">
+            <span class="iconfont icon-facebook"></span>
+          </a>
+          <a href="https://github.com/" target="_blank">
+            <span class="iconfont icon-github"> </span>
+          </a>
+          <a href="https://github.com/" target="_blank">
+            <span class="iconfont icon-twitter"></span>
+          </a>
+          <a href="https://github.com/" target="_blank">
+            <span class="iconfont icon-youxiang"></span>
+          </a>
+          <a href="https://github.com/" target="_blank">
+            <span class="iconfont icon-QQ"></span>
+          </a>
+        </div>
       </el-card>
     </div>
 
@@ -30,7 +54,7 @@
       <div class="title" style="text-align:left;height: 50px;line-height:50px;padding:0 8px">全部标签</div>
       <el-card>
         <span class="tags_box">
-          <span class="tags" v-for="o in 11" :key="o">{{'标签 ' + o }}</span>
+          <span class="tags" v-for="(item,index) in labelArr" :key="index">{{item.keyword + ' ('+item.count+')' }}</span>
         </span>
       </el-card>
     </div>
@@ -38,26 +62,58 @@
     <div class="right_model">
       <div class="title" style="text-align:left;">随笔</div>
       <el-card>
-        <div class="essays">
-          随着年龄的增长，人总会变得越来越宽容；所以很多事情到最后并不是真的解决了，而是，算了吧。
-        </div>
-        <div class="essays">
-          有时候就是觉得挺累的，什么都不想说，其实也没人愿意听你吐苦水，一堆负能量爆棚的话，真的没人愿意听，所以更想一个人，安静的听着歌喝着酒，想通看透自己安慰自己。
+        <div class="essays" v-for="(item,i) in essayArr" :key="i">
+          {{item.essaysContent}}
         </div>
       </el-card>
     </div>
   </el-col>
 </template>
 <script>
+import { selectBlogNumMethods, selectEssaysMethods, selectBlogLabelMethods } from '@/api/essays';
 export default {
   data() {
     return {
+      blogDetailsObj: {},
+      essayArr: [],
+      labelNum: null,
+      labelArr: null,
     };
   },
   created() {
-
+    this.selectBlogNum();
+    this.selectEssays();
+    this.selectBlogLabel();
   },
   methods: {
+    async selectBlogNum() {
+      const { data: data } = await selectBlogNumMethods();
+      if (data.status != 200) return this.$message.error(data.message);
+      this.blogDetailsObj = data.data;
+    },
+
+    async selectEssays() {
+      const params = {
+        currentPage: 1,
+        pageSize: 5,
+      }
+      const { data: data } = await selectEssaysMethods(params);
+      if (data.status != 200) return this.$message.error(data.message);
+      this.essayArr = data.data;
+    },
+
+    async selectBlogLabel() {
+      const { data: data } = await selectBlogLabelMethods();
+      console.log(data);
+      this.labelArr = data.data;
+      this.labelNum = data.data.length;
+    },
+    navigateToNotes() {
+      this.$router.push('/notes')
+    },
+    navigateToEssays() {
+      this.$router.push('/essays')
+    },
     getImgUrl(url) {
       return require("@/assets/images/" + url);
     },
@@ -65,4 +121,22 @@ export default {
 };
 </script>
 <style lang='scss' scoped>
+.icons {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top:20px;
+}
+.icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.icons span {
+  font-size: 24px;
+  margin: 5px 13px;
+  cursor: pointer;
+}
 </style>

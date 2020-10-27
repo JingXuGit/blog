@@ -13,3 +13,11 @@ export const deleteOneEssays = (data) => {
     const param = data
     return request.post('api/deleteOneEssays', param)
 };
+export const selectBlogNumMethods = (data) => {
+    const param = data
+    return request.post('api/selectBlogNum', param)
+};
+export const selectBlogLabelMethods = (data) => {
+    const param = data
+    return request.post('api/selectBlogLabel', param)
+};

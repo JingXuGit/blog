@@ -16,6 +16,7 @@
               <el-timeline-item :timestamp="item.createTime" placement="top" v-for="(item,index) in articleArr" :key='index'>
                 <div style="cursor:pointer">
                   <div style="display:inline-flex;justify-content:space-between;align-items:center">
+
                     <div class="hover ehover1" style="width: 100px; height: 100px;cursor:pointer;margin:5px;">
                       <el-image :src="item.cover" lazy style="width: 100%; height: 100%;display:inline-block;" fit="cover"></el-image>
                       <div class="overlay">
@@ -23,10 +24,12 @@
                       </div>
                     </div>
                     <div style="margin-left:20px">
-                      <p>{{item.createTime}}</p>
+                      <div>{{item.createTime}}
+                      </div>
                       <h3 style="margin:10px 0;" @click.stop="navigateToDetail(item.id)" @touchend.stop="navigateToDetail(item.id)">{{item.articleTitle}}</h3>
                     </div>
                   </div>
+                  <div style="font-size:12px;text-align: right;margin:0 0 10px 0;">#{{item.keyword}}</div>
                 </div>
                 <el-divider></el-divider>
               </el-timeline-item>
