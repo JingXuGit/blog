@@ -1,5 +1,5 @@
 <template>
-  <div style="height:100%">
+  <div>
     <HeaderNav />
     <!-- <div class="container"> -->
     <transition name="fade" mode="out-in">
@@ -10,6 +10,7 @@
       <p style="font-size:12px;margin:5px 0;">❤️By-JingXu-Blog</p>
       <p style="font-size:12px">© {{date}} 雪后燕瑶池,人间第一枝</p>
     </el-footer>
+    <el-backtop target=".headContainer"></el-backtop>
   </div>
 </template>
 

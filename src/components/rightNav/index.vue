@@ -104,7 +104,6 @@ export default {
 
     async selectBlogLabel() {
       const { data: data } = await selectBlogLabelMethods();
-      console.log(data);
       this.labelArr = data.data;
       this.labelNum = data.data.length;
     },

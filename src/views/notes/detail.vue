@@ -1,27 +1,29 @@
 /* 文章列表 */
 <template>
-  <div class='content'>
-    <div style="margin: 0 auto; max-width: 1080px !important; padding: 0 10px">
+  <div class='content' >
+    <div style="margin: 0 auto; max-width: 1080px !important; padding: 0 10px;">
 
       <el-row style="margin:20px 0" :gutter="10">
         <el-col :xs="24" :sm="24" :md="24" :lg="17" :xl="17">
           <div>
-            <div class="flex_between" style="height: 50px;padding:0 8px">
+            <div style="padding:0 8px;text-align:left;">
               <div class="title">{{articleObj.articleTitle}}</div>
-              <div class="title">#{{articleObj.keyword}}</div>
             </div>
+            <div class="title" style="padding:8px 0px;text-align:right;">#{{articleObj.keyword}}</div>
           </div>
+          <el-image :src="articleObj.cover" lazy style="width:100%;height:100%;display:inline-block;"></el-image>
+          <div>
 
-          <el-card>
-            <el-image :src="articleObj.cover" lazy style="width:100%;height:100%;display:inline-block;"></el-image>
             <mavon-editor class="md" :value="articleObj.articleContent" :subfield="false" :defaultOpen="'preview'" :toolbarsFlag="false" :editable="false" :scrollStyle="true" :ishljs="true" />
 
-            <mavon-editor v-model="context" :toolbars="toolbars" defaultOpen='edit' :subfield="false" placeholder='请在这里填写留言...' @keydown="editorKeyDown" />
+            <mavon-editor v-model="context" :toolbars="toolbars" :autofocus="false" defaultOpen='edit' :subfield="false" placeholder='请在这里填写留言...' @keydown="editorKeyDown" />
             <div style="text-align:left;margin:10px 0;">欢迎评论~~</div>
             <div style="text-align:right;margin:10px 0;">
-              <el-button type="primary" size="mini">保存</el-button>
+              <el-button type="primary" size="mini" v-if="role">发布</el-button>
+              <el-button type="primary" size="mini" v-else>请先登录</el-button>
             </div>
-          </el-card>
+
+          </div>
         </el-col>
 
         <rightNav />
@@ -78,7 +80,18 @@ export default {
         preview: true, // 预览
         defaultOpen: 'edit',
       },
+
+      role: JSON.parse(this.$store.state.blog.user) == null ? null : JSON.parse(this.$store.state.blog.user).role,
     };
+  },
+  watch: {
+    "$store.state.blog.user"(newval) {
+      if (newval != null) {
+        this.role = JSON.parse(newval).role
+      } else {
+        this.role = null
+      }
+    },
   },
   created() {
     this.selectArticle(this.$route.query.id)
@@ -88,13 +101,6 @@ export default {
       const { data: data } = await selectOneArticle({ id: id });
       if (data.status != 200) return this.$message.error(data.message);
       this.articleObj = data.data;
-      // this.dialogForm = {
-      //   id: data.data.id,
-      //   articleTitle: data.data.articleTitle,
-      //   keyword: data.data.keyword,
-      //   articleContent: data.data.articleContent,
-      //   cover: data.data.cover,
-      // }
     },
     editorKeyDown() {
 
