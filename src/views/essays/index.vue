@@ -2,7 +2,7 @@
   <div class='content'>
     <div style="margin: 0 auto; max-width: 1080px !important; padding: 0 10px">
       <div class="flex_between" style="height: 50px;padding:0 8px">
-        <div class="title">随笔</div>
+        <div class="title">短句</div>
       </div>
       <div style="text-align:right;margin:10px 0">
         <el-button type="primary" size="mini" @click="addEssays" @touchend="addEssays" v-if="role == 'admin'">添加随笔</el-button>

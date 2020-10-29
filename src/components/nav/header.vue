@@ -14,8 +14,8 @@
               <el-menu-item index="/">博客首页</el-menu-item>
               <el-menu-item index="/notes">文章</el-menu-item>
               <el-menu-item index="/resume">简历</el-menu-item>
-              <el-menu-item index="/essays">随笔</el-menu-item>
-              <el-menu-item index="/guestbook">留言</el-menu-item>
+              <el-menu-item index="/essays">短句</el-menu-item>
+              <el-menu-item index="/guestbook">留言板</el-menu-item>
               <el-menu-item index="/editor" v-if="role == 'admin'">编辑文章</el-menu-item>
             </el-menu>
           </el-col>

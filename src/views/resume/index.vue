@@ -28,7 +28,7 @@
           <p class="text_right">人民有信仰，民族有希望，国家有力量</p>
           <p class="text_right"><span class="el-icon-phone"> 18310282832</span></p>
           <p class="text_right"><span class="el-icon-message"> 18310282832@163.com</span></p>
-          <el-button type="primary" size="mini" style="margin:5px 0">下载简历到本地</el-button>
+          <el-button type="primary" size="mini" style="margin:5px 0" @click="downLoad" @touchend="downLoad">下载简历到本地</el-button>
           <br>
           <el-button type="primary" class="hidden-md-and-down" size="mini" style="margin:5px 0" @click.stop="returnIndex" @touhend.stop="returnIndex">返回首页</el-button>
         </div>
@@ -268,6 +268,7 @@
   </div>
 </template>
 <script>
+import myconfig from '@/config';
 import drawer from '@/components/drawer';
 export default {
   components: { 'drawer-biew': drawer },
@@ -343,6 +344,9 @@ export default {
     },
     drawerChange(data) {
       this.drawer = data;
+    },
+    downLoad() {
+      window.open(myconfig.baseUrl + './public/page/headImg/李景旭-web前端工程师.pdf');
     },
   },
 };

@@ -85,7 +85,7 @@ export default {
       isAutoplay: true,
       carouselArr: [{
         id: 1,
-        images: "banner1.jpg",
+        images: "banner5.jpg",
         title: "忙碌是自由活着的一种底气",
       },
       {
@@ -102,6 +102,11 @@ export default {
         id: 4,
         title: "兴趣支撑梦想~",
         images: "banner4.jpg",
+      },
+      {
+        id: 5,
+        title: "兴趣支撑梦想~",
+        images: "banner1.jpg",
       },
       ],
     };

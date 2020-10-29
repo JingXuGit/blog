@@ -25,11 +25,11 @@
           </el-menu-item>
           <el-menu-item index="/essays">
             <i class="el-icon-chat-line-square"></i>
-            <span slot="title">随笔</span>
+            <span slot="title">短句</span>
           </el-menu-item>
           <el-menu-item index="/guestbook">
             <i class="el-icon-message"></i>
-            <span slot="title">留言</span>
+            <span slot="title">留言板</span>
           </el-menu-item>
           <el-menu-item index="/editor" v-if="role == 'admin'">
             <i class="el-icon-edit"></i>

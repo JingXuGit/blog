@@ -19,7 +19,7 @@
             <p>{{labelNum}}种</p>
           </li>
           <li class="personal_message_list_li" @click="navigateToEssays" @touchend="navigateToEssays">
-            <p>随笔</p>
+            <p>短句</p>
             <p>{{blogDetailsObj.essaysNum}}篇</p>
           </li>
         </ul>
@@ -60,7 +60,7 @@
     </div>
 
     <div class="right_model">
-      <div class="title" style="text-align:left;">随笔</div>
+      <div class="title" style="text-align:left;">短句</div>
       <el-card>
         <div class="essays" v-for="(item,i) in essayArr" :key="i">
           {{item.essaysContent}}
