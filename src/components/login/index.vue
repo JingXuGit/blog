@@ -53,6 +53,7 @@
 
 <script>
 import { loginMethods, registerMethods } from '@/api/login'
+import myconfig from '@/config';
 export default {
 
   data() {
@@ -127,7 +128,7 @@ export default {
             email: this.registForm.email,
             password: this.registForm.password,
             username: this.registForm.username,
-            avatarImgUrl: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png'
+            avatarImgUrl: `${myconfig.baseUrl}public/page/headImg/1604365182578.png`
           }
           const { data: data } = await registerMethods(params)
           if (data.status != 200) return this.$message.error(data.message);

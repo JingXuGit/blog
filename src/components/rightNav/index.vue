@@ -62,7 +62,7 @@
     <div class="right_model">
       <div class="title" style="text-align:left;">短句</div>
       <el-card>
-        <div class="essays" v-for="(item,i) in essayArr" :key="i">
+        <div class="essays" v-for="(item,i) in essayArr" :key="i" @click="navigateToEssays" @touchend="navigateToEssays">
           {{item.essaysContent}}
         </div>
       </el-card>
@@ -126,7 +126,7 @@ export default {
   justify-content: center;
   flex-direction: row;
   flex-wrap: wrap;
-  margin-top:20px;
+  margin-top: 20px;
 }
 .icons a {
   display: flex;
