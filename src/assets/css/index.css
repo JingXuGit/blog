@@ -311,6 +311,7 @@ body::-webkit-scrollbar-thumb:hover {
     margin-bottom: 14px;
     padding-right: 10px;
     text-align: left;
+    height:38px;
 }
 
 .ab {
@@ -661,10 +662,6 @@ body::-webkit-scrollbar-thumb:hover {
 .el-menu-top {
     display: flex;
     justify-content: flex-end;
-}
-
-.title:hover {
-    /* background: #f7f7f7; */
 }
 
 .v-note-show {
