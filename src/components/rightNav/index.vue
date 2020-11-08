@@ -54,7 +54,7 @@
       <div class="title" style="text-align:left;height: 50px;line-height:50px;padding:0 8px">全部标签</div>
       <el-card>
         <span class="tags_box">
-          <span class="tags" v-for="(item,index) in labelArr" :key="index">{{item.keyword + ' ('+item.count+')' }}</span>
+          <span class="tags" v-for="(item,index) in labelArr" :key="index" @click.stop="navigateToDetail(item.id)" @touchend.stop="navigateToDetail(item.id)">{{item.keyword + ' ('+item.count+')' }}</span>
         </span>
       </el-card>
     </div>
@@ -109,6 +109,9 @@ export default {
     },
     navigateToNotes() {
       this.$router.push('/notes')
+    },
+    navigateToDetail(id) {
+      this.$router.push('/detail?id=' + id);
     },
     navigateToEssays() {
       this.$router.push('/essays')

@@ -44,7 +44,7 @@
               <div class="text_box">
                 <h2 class="text_left margin10" style="cursor: pointer;">{{item.articleTitle}}</h2>
                 <p class="text_left margin10" style="opacity:0.6;font-size:13px;">五月 24, 2020</p>
-                <p class="text_clamp" v-html="item.articleContent">{{item.articleContent}}</p>
+                <!-- <p class="text_clamp" v-html="item.articleContent">{{item.articleContent}}</p> -->
                 <div class="flex_between margin10">
                   <el-button type="primary" size="mini" @click="toDetail(item.id)" @touchend="toDetail(item.id)">开始阅读</el-button>
                   <div style="cursor: pointer;">#{{item.keyword}}</div>

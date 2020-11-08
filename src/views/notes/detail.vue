@@ -1,6 +1,7 @@
 /* 文章列表 */
 <template>
-  <div class='content' >
+  <div class='content'>
+    <!-- <transition name="fade" mode="out-in"> -->
     <div style="margin: 0 auto; max-width: 1080px !important; padding: 0 10px;">
 
       <el-row style="margin:20px 0" :gutter="10">
@@ -31,7 +32,9 @@
 
     </div>
 
+    <!-- </transition> -->
   </div>
+
 </template>
 <script>
 import { selectOneArticle } from '@/api/article'
@@ -92,6 +95,9 @@ export default {
         this.role = null
       }
     },
+    $route(newval) {
+      this.selectArticle(newval.query.id)
+    }
   },
   created() {
     this.selectArticle(this.$route.query.id)
@@ -109,4 +115,12 @@ export default {
 };
 </script>
 <style  scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
 </style>
