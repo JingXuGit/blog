@@ -6,6 +6,7 @@
       <router-view></router-view>
     </transition>
     <!-- </div> -->
+    <aplayer/>
     <el-footer style="padding:0;position:relative;" v-if="$route.path != '/resume'">
       <p style="font-size:12px;margin:5px 0;">❤️By-JingXu-Blog</p>
       <p style="font-size:12px">© {{date}} 雪后燕瑶池,人间第一枝</p>
@@ -16,6 +17,7 @@
 <script>
 // @ is an alias to /src
 import HeaderNav from "../components/nav/header.vue";
+import aplayer from "../components/aplayer/index.vue";
 export default {
   data() {
     return {
@@ -25,6 +27,7 @@ export default {
   name: "Home",
   components: {
     HeaderNav,
+    aplayer
   }
 };
 </script>
