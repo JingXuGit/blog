@@ -95,10 +95,5 @@ export default {
 }
 </script>
 <style>
-.aplayer {
-  position: fixed !important;
-  bottom: 20px;
-  left: 0px;
-  z-index: 999999 !important;
-}
+
 </style>
