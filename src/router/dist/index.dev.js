@@ -233,6 +233,7 @@ _vueRouter["default"].prototype.push = function push(location) {
 };
 
 var router = new _vueRouter["default"]({
+  mode: 'history',
   routes: routes
 });
 router.afterEach(function () {
